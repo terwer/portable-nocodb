@@ -1,0 +1,14 @@
+version: "2.1"
+services: 
+  nocodb: 
+    environment:
+      NC_DB: "${RDS_MYSQL_HOST}?u=${USERNAME}&p=${PASSWORD}&d=nocodb"
+    image: "nocodb/nocodb:latest"
+    ports: 
+      - "8000:8080"
+    restart: always
+    volumes: 
+      - "./nc_data:/usr/app/data"
+volumes: 
+  db_data: {}
+  nc_data: {}
